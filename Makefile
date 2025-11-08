@@ -32,6 +32,8 @@ directories:
 
 clean:
 	del /S /F $(EXEC)
+	del /S /F pkg_yrco.tar
 	del /S /F $(OBJ_DIR)\*.o
+	del /S /F $(TARGET)\*
 
 .PHONY: all clean
