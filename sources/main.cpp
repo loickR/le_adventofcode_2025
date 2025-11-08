@@ -1,7 +1,10 @@
 #include <iostream>
+#include "Exercise1.h"
 
 int main() {
 
-    std::cout << "Hello World!\n" << std::endl;
+    Exercise1 exercise1;
+    exercise1.doExecute();
+
     return 0;
 }

@@ -9,6 +9,8 @@ CFLAGS=-g -pg -fprofile-arcs -ftest-coverage
 LDFLAGS=-pg -fprofile-arcs -ftest-coverage
 EXEC=yrco.exe
 OBJS+=$(OBJ_DIR)/main.o \
+$(OBJ_DIR)/IExercise.o \
+$(OBJ_DIR)/Exercise1.o \
 
 
 all:	$(EXEC)
