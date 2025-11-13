@@ -1,5 +1,13 @@
 PROJECT_ROOT = $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
+ifeq (($OS), Windows_NT)
+	DEL = del /S /F
+	MOVE = move
+else
+	DEL = rm -rf
+	MOVE = mv
+endif
+
 OBJ_DIR=obj
 TARGET=target
 HEADERS=include
@@ -17,13 +25,13 @@ all:	$(EXEC)
 
 $(EXEC):	$(OBJS)
 	$(CXX) $(LDFLAGS) -o $@ $^
-	move  $(EXEC) target
+	$(MOVE) $(EXEC) target
 
 $(OBJ_DIR)/%.o:	$(SOURCES)/%.cpp
 	$(CXX) -c $(CFLAGS) -I$(HEADERS) -o $@ $<
 
 package:
-	del /S /F pkg_yrco.tar
+	$(DEL) pkg_yrco.tar
 	make clean
 	make all
 	tar czfv pkg_yrco.tar target
@@ -33,9 +41,9 @@ directories:
 	mkdir $(TARGET)
 
 clean:
-	del /S /F $(EXEC)
-	del /S /F pkg_yrco.tar
-	del /S /F $(OBJ_DIR)\*.o
-	del /S /F $(TARGET)\*
+	$(DEL) $(EXEC)
+	$(DEL) pkg_yrco.tar
+	$(DEL) $(OBJ_DIR)/*.*
+	$(DEL) $(TARGET)/*.*
 
 .PHONY: all clean
