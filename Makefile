@@ -19,6 +19,7 @@ EXEC=yrco.exe
 OBJS+=$(OBJ_DIR)/main.o \
 $(OBJ_DIR)/IExercise.o \
 $(OBJ_DIR)/Exercise1.o \
+$(OBJ_DIR)/SampleExercise.o \
 
 
 all:	$(EXEC)
