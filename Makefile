@@ -13,10 +13,9 @@ TARGET=target
 HEADERS=include
 SOURCES=sources
 CXX=g++
-CFLAGS=-g -pg -fprofile-arcs -ftest-coverage -std=c++17
-LDFLAGS=
+CFLAGS=-g -pg -fprofile-arcs -ftest-coverage -std=c++17 -Wall -ansi -O0
 EXEC=yrco.exe
-LIB_DIR=lib
+LIB_DIR=lib/
 LIB=psyume
 LIBS=-L$(LIB_DIR) -l$(LIB)
 OBJS+=$(OBJ_DIR)/IExercise.o \
@@ -27,7 +26,8 @@ $(OBJ_DIR)/main.o \
 all:	$(EXEC)
 
 $(EXEC):	$(OBJS)
-	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+	$(CXX) $(CFLAGS) -o $@ $^ $(LIBS)
+	cp $(LIB_DIR)/*.* target
 	$(MOVE) $(EXEC) target
 
 $(OBJ_DIR)/%.o:	$(SOURCES)/%.cpp
