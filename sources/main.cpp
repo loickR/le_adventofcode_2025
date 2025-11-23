@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Exercise1.h"
 #include "SampleExercise.h"
+#include <psyume.h>
 
 int main() {
 
@@ -8,6 +9,8 @@ int main() {
     
     SampleExercise exercise;
     exercise.doExecute();
+
+   FileParser::get_lines_from_file("");
 
     /*
     Exercise1 exercise1;

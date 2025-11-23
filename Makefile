@@ -13,19 +13,21 @@ TARGET=target
 HEADERS=include
 SOURCES=sources
 CXX=g++
-CFLAGS=-g -pg -fprofile-arcs -ftest-coverage
-LDFLAGS=-pg -fprofile-arcs -ftest-coverage
+CFLAGS=-g -pg -fprofile-arcs -ftest-coverage -std=c++17
+LDFLAGS=
 EXEC=yrco.exe
-OBJS+=$(OBJ_DIR)/main.o \
-$(OBJ_DIR)/IExercise.o \
+LIB_DIR=lib
+LIB=psyume
+LIBS=-L$(LIB_DIR) -l$(LIB)
+OBJS+=$(OBJ_DIR)/IExercise.o \
 $(OBJ_DIR)/Exercise1.o \
 $(OBJ_DIR)/SampleExercise.o \
-
+$(OBJ_DIR)/main.o \
 
 all:	$(EXEC)
 
 $(EXEC):	$(OBJS)
-	$(CXX) $(LDFLAGS) -o $@ $^
+	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 	$(MOVE) $(EXEC) target
 
 $(OBJ_DIR)/%.o:	$(SOURCES)/%.cpp
@@ -37,6 +39,10 @@ package:
 	make all
 	tar czfv pkg_yrco.tar target
 
+run:
+	make package
+	./target/$(EXEC)
+
 directories:
 	mkdir $(OBJ_DIR)
 	mkdir $(TARGET)
@@ -47,4 +53,4 @@ clean:
 	$(DEL) $(OBJ_DIR)/*.*
 	$(DEL) $(TARGET)/*.*
 
-.PHONY: all clean
+.PHONY: all mrproper clean
