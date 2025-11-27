@@ -13,9 +13,16 @@ SampleExercise::SampleExercise() {
 void SampleExercise::doExecute() {
     std::cout << "This is an example" << std::endl;
 
-    std::vector<std::string> lines = FileParser::get_lines_from_file("../exercises/exemple.txt");
-    for (std::string aLine : lines) {
-        std::cout << aLine << std::endl;
+    std::vector<Data> lines = FileParser::getLinesFromFile("../exercises/exemple.txt");
+    for (Data aLine : lines) {
+        std::cout << aLine.getLine() << std::endl;
+    }
+
+    std::vector<Data> lines2 = FileParser::getLinesFromFile("../exercises/exemple2.txt");
+    for (Data d : lines2) {
+      //  std::cout << d.getLine() << std::endl;
+
+        std::vector<std::string> val = d.splitString(" ");
     }
 }
 

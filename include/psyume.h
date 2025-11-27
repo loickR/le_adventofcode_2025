@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "Data.h"
 
 class FileParser {
 
@@ -12,7 +13,7 @@ private:
     ~FileParser();
 
 public:
-    static std::vector<std::string> get_lines_from_file(std::string const& file);
+    static std::vector<Data> getLinesFromFile(std::string const& file);
 
 
 };
