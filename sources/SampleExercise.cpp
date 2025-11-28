@@ -22,7 +22,7 @@ void SampleExercise::doExecute() {
     for (Data d : lines2) {
       //  std::cout << d.getLine() << std::endl;
 
-        std::vector<std::string> val = d.splitString(" ");
+        std::vector<std::string> val = d.splitString(' ');
     }
 }
 

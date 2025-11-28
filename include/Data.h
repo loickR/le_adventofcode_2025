@@ -14,7 +14,7 @@ public:
 
     std::string getLine() const;
 
-    std::vector<std::string> splitString(std::string const& delimiter) const;
+    std::vector<std::string> splitString(char const& delimiter) const;
 
     std::vector<int> getIntValues() const;
 
