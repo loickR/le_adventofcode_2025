@@ -18,9 +18,11 @@ public:
 
     std::vector<int> getIntValues() const;
 
+    std::vector<int> getIntValuesFromStr(std::string const& str) const;
+
     bool operator==(Data const& d);
 
-    int compareSideBySide(int limit);
+    std::vector<int> compareSideBySide(int limit) const;
 
     ~Data();
 };
