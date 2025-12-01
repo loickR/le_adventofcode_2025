@@ -22,7 +22,6 @@ void Exercise1::doExecute() {
     int password = 0;
     int min = 0;
     int max = 100;
-    int copyMax = max;
     int sum = max;
 
     for (int i = 0; i < lines.size(); i++) {
@@ -33,27 +32,31 @@ void Exercise1::doExecute() {
         std::string numberStr = data.getLine().substr(1);
         int number = stoi(numberStr);
 
+        int result = currentDial;
         if (direction == 'L') {
-            std::cout << "copyMax = " << copyMax << std::endl;
-            std::cout << "currentDial = " << currentDial << std::endl;
-
-            currentDial = copyMax - abs(currentDial - number);
-            if (currentDial <= 0) {
-                currentDial = max - currentDial;
+            if (i == 0) {
+                currentDial = max - abs(currentDial - number);
             }
-            copyMax = currentDial;
-            sum = currentDial;
+            else {
+                currentDial = abs(currentDial - number);
+                sum = currentDial;
+
+                if (currentDial < 0) {
+                    currentDial = max - currentDial;
+                }
+            }
         }
         else if (direction == 'R') {
-            std::cout << "copyMax = " << copyMax << std::endl;
-            std::cout << "currentDial = " << currentDial << std::endl;
-
-            currentDial = copyMax + abs(currentDial + number);
-            if (currentDial >= 100) {
-                currentDial = min + currentDial;
+            if (i == 0) {
+                currentDial = max + abs(currentDial - number);
             }
-            copyMax = currentDial;
-            sum = currentDial;
+            else {
+                currentDial = abs(currentDial + number);
+                sum = currentDial;
+                if (currentDial > 100) {
+                    currentDial = currentDial - max;
+                }
+            }
         }
 
         std::cout << "to point at " << currentDial << std::endl;
