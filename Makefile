@@ -41,7 +41,7 @@ package:
 
 run:
 	make package
-	./target/$(EXEC)
+	cd target | ./$(EXEC)
 
 directories:
 	mkdir $(OBJ_DIR)
