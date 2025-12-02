@@ -38,17 +38,12 @@ void Exercise1::run(std::string const& filename) {
 
         char direction = data.getLine().at(0);
         std::string numberStr = data.getLine().substr(1);
-        int number = stoi(numberStr);
+        int newPos = stoi(numberStr);
 
-        if (direction == 'L') {
-            moveLeft(pos, currentDial, number, min, max);
-        }
-        else if (direction == 'R') {
-            moveRight(pos, currentDial, number, max);
-        }
+        rotate(pos, direction, newPos, min, max);
 
         currentDial = pos.currentDial;
-        sum = pos.currentDial;
+        sum = pos.sum;
 
         std::cout << " to point at " << abs(currentDial) << std::endl;
         if (sum == 100 || sum == 0) {
@@ -59,10 +54,24 @@ void Exercise1::run(std::string const& filename) {
     std::cout << "The password is : " << password << std::endl;
 }
 
-void Exercise1::moveLeft(Position& pos, int currentPos, int newPos, int min, int max) {
-    int currentDial = currentPos - newPos;
+void Exercise1::rotate(Position& pos, char direction, int newPos, int min, int max) {
+    switch (direction) {
+        case 'L':
+            moveLeft(pos, newPos, min, max);
+            break;
+        case 'R':
+            moveRight(pos, newPos, max);
+            break;
+        default:
+            break;
+    }
+}
+
+void Exercise1::moveLeft(Position& pos, int newPos, int min, int max) {
+    int currentDial = pos.currentDial - newPos;
     int sum = abs(currentDial);
 
+    //std::cout << std::endl;
     //std::cout << "L -> currentDial = " << currentDial << std::endl;
     if (currentDial < min) {
         currentDial = max - sum;
@@ -72,14 +81,14 @@ void Exercise1::moveLeft(Position& pos, int currentPos, int newPos, int min, int
     pos.sum = sum;
 }
 
-void Exercise1::moveRight(Position& pos, int currentPos, int newPos, int max) {
-    int currentDial = currentPos + newPos;
+void Exercise1::moveRight(Position& pos, int newPos, int max) {
+    int currentDial = pos.currentDial + newPos;
     int sum = abs(currentDial);
 
+    //std::cout << std::endl;
     //std::cout << "R -> currentDial = " << sum << std::endl;
     if (currentDial > max) {
         int divide = sum / max;
-        int modulo = divide % max;
         // std::cout << std::endl;
         // std::cout << "divide = " << divide << std::endl;
         currentDial = sum - (divide * max);
@@ -91,6 +100,10 @@ void Exercise1::moveRight(Position& pos, int currentPos, int newPos, int max) {
 
 void Exercise1::doExercice1P1() {
     run("exercises/exercice1_p1.txt");
+}
+
+void Exercise1::doExercice1P2() {
+    // TODO
 }
 
 void Exercise1::doSample() {
