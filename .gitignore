@@ -1,4 +1,7 @@
 /target
 /.vscode/
+/.vscode/settings.json
 /obj/
 pkg_yrco.tar
+/libpsyume.dylib
+/yrco.exe
