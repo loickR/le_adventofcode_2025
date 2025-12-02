@@ -39,7 +39,7 @@ void Exercise1::run(std::string const& filename) {
         char direction = data.getLine().at(0);
         std::string numberStr = data.getLine().substr(1);
         int newPos = stoi(numberStr);
-
+        
         rotate(pos, direction, newPos, min, max);
 
         currentDial = pos.currentDial;
@@ -111,9 +111,9 @@ void Exercise1::doSample() {
 }
 
 void Exercise1::doExecute() {
-   doSample();
+   //doSample();
 
-   //doExercice1P1();
+   doExercice1P1();
 }
 
 Exercise1::~Exercise1() {
