@@ -28,6 +28,10 @@ void Exercise1::run(std::string const& filename) {
 
     std::cout << "The dial starts by pointing at " << currentDial << std::endl;
 
+    Position pos;
+    pos.currentDial = currentDial;
+    pos.sum = sum;
+
     for (int i = 0; i < size; i++) {
         Data data = lines[i];
         std::cout << "The dial is rotated " << data.getLine();
@@ -36,7 +40,6 @@ void Exercise1::run(std::string const& filename) {
         std::string numberStr = data.getLine().substr(1);
         int number = stoi(numberStr);
 
-        Position pos;
         if (direction == 'L') {
             moveLeft(pos, currentDial, number, min, max);
         }
