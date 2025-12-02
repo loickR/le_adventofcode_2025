@@ -27,21 +27,18 @@ all:	$(EXEC)
 
 $(EXEC):	$(OBJS)
 	$(CXX) $(CFLAGS) -o $@ $^ $(LIBS)
-	cp $(LIB_DIR)/*.* target
-	$(MOVE) $(EXEC) target
+	cp $(LIB_DIR)/*.* .
 
 $(OBJ_DIR)/%.o:	$(SOURCES)/%.cpp
 	$(CXX) -c $(CFLAGS) -I$(HEADERS) -o $@ $<
 
 package:
-	$(DEL) pkg_yrco.tar
 	make clean
 	make all
-	tar czfv pkg_yrco.tar target
 
 run:
 	make package
-	cd target | ./$(EXEC)
+	./$(EXEC)
 
 directories:
 	mkdir $(OBJ_DIR)

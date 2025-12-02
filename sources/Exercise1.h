@@ -7,12 +7,30 @@
 
 #include "IExercise.h"
 
+#include <string>
+
+struct Position {
+    int currentDial;
+    int sum;
+};
+
 class Exercise1 : public IExercise {
 
-public:
-Exercise1();
+private:
+    void run(std::string const& filename);
 
-void doExecute();
+    void moveLeft(Position& pos, int currentPos, int newPos, int min, int max);
+
+    void moveRight(Position& pos, int currentPos, int newPos, int max);
+protected:
+    void doSample();
+
+    void doExercice1P1();
+
+public:
+    Exercise1();
+
+    void doExecute();
 
 ~Exercise1();
 };
