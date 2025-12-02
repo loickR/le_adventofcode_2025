@@ -71,9 +71,7 @@ void Exercise1::moveLeft(Position& pos, int newPos, int min, int max) {
     int currentDial = pos.currentDial - newPos;
     int sum = abs(currentDial);
 
-    //std::cout << std::endl;
-    //std::cout << "L -> currentDial = " << currentDial << std::endl;
-    if (currentDial < min) {
+    if (currentDial <= min) {
         currentDial = max - sum;
     }
 
@@ -85,13 +83,9 @@ void Exercise1::moveRight(Position& pos, int newPos, int max) {
     int currentDial = pos.currentDial + newPos;
     int sum = abs(currentDial);
 
-    //std::cout << std::endl;
-    //std::cout << "R -> currentDial = " << sum << std::endl;
-    if (currentDial > max) {
+    if (currentDial >= max) {
         int divide = sum / max;
-        // std::cout << std::endl;
-        // std::cout << "divide = " << divide << std::endl;
-        currentDial = sum - (divide * max);
+         currentDial = sum - (divide * max);
     }
 
     pos.currentDial = currentDial;

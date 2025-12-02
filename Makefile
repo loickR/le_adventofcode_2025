@@ -20,7 +20,6 @@ LIB=psyume
 LIBS=-L$(LIB_DIR) -l$(LIB)
 OBJS+=$(OBJ_DIR)/IExercise.o \
 $(OBJ_DIR)/Exercise1.o \
-$(OBJ_DIR)/SampleExercise.o \
 $(OBJ_DIR)/main.o \
 
 all:	$(EXEC)
