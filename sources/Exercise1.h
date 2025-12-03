@@ -12,12 +12,15 @@
 struct Position {
     int currentDial;
     int sum;
+    int divide;
 };
 
 class Exercise1 : public IExercise {
 
 private:
     void run(std::string const& filename);
+
+    void run2(std::string const& filename);
 
     void rotate(Position& pos, char direction, int newPos, int min, int max);
 
@@ -27,6 +30,8 @@ private:
     
 protected:
     void doSample();
+
+    void doSample2();
 
     void doExercice1P1();
 
