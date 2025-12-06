@@ -1,11 +1,60 @@
 #include "Exercise2.h"
 
-Exercise2::Exercise2() {
+#include <psyume.h>
+#include <iostream>
+#include <vector>
+
+Exercise2::Exercise2() : wrongIdsCount(0) {
 
 }
 
-void Exercise2::doExecute() {
+void Exercise2::run(std::string const& filename) {
+   std::vector<Data> lines = FileParser::getLinesFromFile(filename);
+   std::vector<std::string> splittingLines = lines[0].splitString(',');
+   
+   for (std::string const& str : splittingLines) {
+        Data data(str);
+        std::vector<std::string> strParsed = data.splitString('-');
 
+        std::string strId1 = strParsed[0];
+        std::string strId2 = strParsed[1];
+
+        int id1 = stoi(strId1);
+        int copyId1 = id1;
+        int id2 = stoi(strId2);
+        int size = abs(id2 - id1);
+        int array[size + 1];
+        for (int i = 0; i <= size; i++) {
+            array[i] = copyId1;
+            copyId1++;
+        }
+
+        std::vector<int> wrongIdsList;
+        for (int i = 0; i <= size; i++) {
+            int value = array[i];
+            if (value % 11 == 0) {
+                wrongIdsList.push_back(value);
+            }
+        }
+
+        int wrongSize = wrongIdsList.size();
+        for (int val : wrongIdsList) {
+            this->wrongIdsCount += val;
+        }
+
+        this->wrongIdsCount += wrongSize;
+        std::cout << strId1 << "-" << strId2 << " has " << wrongSize << " invalids IDs" << std::endl;
+   }
+
+   std::cout << "Adding up all the invalid IDs produces " << this->readWrongIdsCount() << std::endl;
+}
+
+int Exercise2::readWrongIdsCount() const {
+    return this->wrongIdsCount;
+}
+
+void Exercise2::doExecute() {
+    run("exercises/sample2.txt");
 }
 
 Exercise2::~Exercise2() {

@@ -9,5 +9,8 @@ int main() {
     Exercise1 exercise1;
     exercise1.doExecute();
 
+    Exercise2 exercise2;
+    exercise2.doExecute();
+
     return 0;
 }
