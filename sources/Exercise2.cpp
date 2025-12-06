@@ -44,11 +44,21 @@ void Exercise2::run(std::string const& filename) {
                 listsubstr.push_back(str.substr(k, subSize));
             }
 
+            bool duplicated = true;
             for (int k = 0; k < listsubstr.size(); k++) {
+                int kp1 = k + 1;
                 
+                if (kp1 > listsubstr.size()) {
+                    break;
+                }
+
+                duplicated &= listsubstr[k] == listsubstr[k+1];
             }
 
-            if (value % 11 == 0) {
+            if (duplicated) {
+                wrongIdsList.push_back(value);
+            }
+            else if (value % 11 == 0) {
                 wrongIdsList.push_back(value);
             }
         }
