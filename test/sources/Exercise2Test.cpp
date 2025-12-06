@@ -1,7 +1,6 @@
-#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-#include "../../sources/Exercise2.h"
+#include <Exercise2.h>
 
 TEST_CASE() {
     REQUIRE( 2 * 5 == 10);
