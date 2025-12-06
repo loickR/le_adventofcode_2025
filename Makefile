@@ -12,10 +12,10 @@ OBJ_DIR=obj
 TARGET=target
 HEADERS=include
 SOURCES=sources
-TEST_SOURCES=test/sources
+TEST_SOURCES=test
 CXX=g++
 CFLAGS=-g -pg -fprofile-arcs -ftest-coverage -std=c++17 -Wall -ansi -O0
-EXEC=yrco.exe
+EXEC=aoc2025.exe
 LIB_DIR=lib/
 LIB=psyume
 LIBS=-L$(LIB_DIR) -l$(LIB)
@@ -37,6 +37,10 @@ package:
 	make clean
 	make all
 
+runTest:
+	make package
+	cd $(PROJECT_ROOT)/test && make run
+
 run:
 	make package
 	./$(EXEC)
@@ -47,7 +51,6 @@ directories:
 
 clean:
 	$(DEL) $(EXEC)
-	$(DEL) pkg_yrco.tar
 	$(DEL) $(OBJ_DIR)/*.*
 	$(DEL) $(TARGET)/*.*
 
