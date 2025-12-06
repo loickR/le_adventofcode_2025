@@ -18,6 +18,8 @@ struct Position {
 class Exercise1 : public IExercise {
 
 private:
+    int password;
+
     void run(std::string const& filename);
 
     void run2(std::string const& filename);
@@ -27,8 +29,10 @@ private:
     void moveLeft(Position& pos, int newPos, int min, int max);
 
     void moveRight(Position& pos, int newPos, int max);
-    
-protected:
+
+public:
+    Exercise1();
+
     void doSample();
 
     void doSample2();
@@ -37,13 +41,11 @@ protected:
 
     void doExercice1P2();
 
-
-public:
-    Exercise1();
-
     void doExecute();
 
-~Exercise1();
+    int readPassword() const;
+
+    ~Exercise1();
 };
 
 

@@ -10,7 +10,7 @@
 #include <cmath>
 #include <psyume.h>
 
-Exercise1::Exercise1() {
+Exercise1::Exercise1() : password(0) {
 
 }
 
@@ -55,6 +55,7 @@ void Exercise1::run(std::string const& filename) {
         }
     }
 
+    this->password = password;
     std::cout << "The password is : " << password << std::endl;
 
 }
@@ -91,14 +92,14 @@ void Exercise1::run2(std::string const& filename) {
         sum = pos.sum;
 
         std::cout << " to point at " << abs(currentDial) << std::endl;
-        if (currentDial >= 100 || currentDial <= 0) {
-            password += 1 + pos.divide;
+        if ((currentDial >= 100 || currentDial <= 0) && pos.divide != 0) {
+            password += 1 + password * pos.divide;
             pos.currentDial = 0;
             pos.sum = 0;
-            pos.divide = 0;
         }
     }
 
+    this->password = password;
     std::cout << "The password is : " << password << std::endl;
 }
 
@@ -166,13 +167,17 @@ void Exercise1::doSample2() {
 }
 
 void Exercise1::doExecute() {
-   //doSample();
+   doSample();
 
    //doExercice1P1();
 
-   doSample2();
+   //doSample2();
 
    //doExercice1P2();
+}
+
+int Exercise1::readPassword() const {
+    return this->password;
 }
 
 Exercise1::~Exercise1() {
