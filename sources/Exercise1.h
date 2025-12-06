@@ -20,10 +20,6 @@ class Exercise1 : public IExercise {
 private:
     int password;
 
-    void run(std::string const& filename);
-
-    void run2(std::string const& filename);
-
     void rotate(Position& pos, char direction, int newPos, int min, int max);
 
     void moveLeft(Position& pos, int newPos, int min, int max);
@@ -32,6 +28,10 @@ private:
 
 public:
     Exercise1();
+
+    void run(std::string const& filename);
+
+    void run2(std::string const& filename);
 
     void doSample();
 

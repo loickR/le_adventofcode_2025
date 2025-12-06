@@ -151,7 +151,7 @@ void Exercise1::moveRight(Position& pos, int newPos, int max) {
 }
 
 void Exercise1::doExercice1P1() {
-    run("exercises/exercice1_p1.txt");
+    run("../exercises/exercice1_p1.txt");
 }
 
 void Exercise1::doExercice1P2() {

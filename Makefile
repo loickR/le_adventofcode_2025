@@ -12,6 +12,7 @@ OBJ_DIR=obj
 TARGET=target
 HEADERS=include
 SOURCES=sources
+TEST_SOURCES=test/sources
 CXX=g++
 CFLAGS=-g -pg -fprofile-arcs -ftest-coverage -std=c++17 -Wall -ansi -O0
 EXEC=yrco.exe
