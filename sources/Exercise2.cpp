@@ -32,6 +32,22 @@ void Exercise2::run(std::string const& filename) {
         std::vector<int> wrongIdsList;
         for (int i = 0; i <= size; i++) {
             int value = array[i];
+            std::string str = std::to_string(value);
+
+            if (str.length() % 2 != 0) {
+                break;
+            }
+            
+            std::vector<std::string> listsubstr;
+            int subSize = str.length() / 2;
+            for (int k = 0; k < str.length(); k+=subSize) {
+                listsubstr.push_back(str.substr(k, subSize));
+            }
+
+            for (int k = 0; k < listsubstr.size(); k++) {
+                
+            }
+
             if (value % 11 == 0) {
                 wrongIdsList.push_back(value);
             }
