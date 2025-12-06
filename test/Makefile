@@ -19,6 +19,8 @@ $(OBJ_DIR)/Exercise1Test.o \
 all:	$(EXEC)
 
 run:
+	rm -f *.dylib
+	cp $(LIB_DIR)/*.dylib .
 	make clean
 	make all
 	./$(EXEC)
