@@ -132,13 +132,8 @@ void Exercise2::run2(std::string const& filename) {
         for (int i = 0; i <= size; i++) {
             long value = array[i];
             std::string str = std::to_string(value);
-            //std::cout << "reading value " << str << std::endl;
 
             if (str.at(0) == '0') {
-                continue;
-            }
-            
-            if (str.length()%2 != 0) {
                 continue;
             }
 
@@ -149,7 +144,9 @@ void Exercise2::run2(std::string const& filename) {
                 listsubstr.push_back(subStr);
             }
 
-            bool duplicated = true;
+            bool duplicated = repeatDigit(value);
+
+            /*
             for (int k = 0; k < listsubstr.size(); k++) {
                 int n = k;
                 int kp1 = n + 1;
@@ -162,12 +159,12 @@ void Exercise2::run2(std::string const& filename) {
                 std::string currentN1 = listsubstr[kp1];
 
                 if (currentN1.empty() || currentN.empty()) {
-                    break;
+                    continue;
                 }
 
-               // std::cout << "Comparing " << currentN << " to " << currentN1 << std::endl;
+                std::cout << "Comparing " << currentN << " to " << currentN1 << std::endl;
                 duplicated &= currentN == currentN1;
-            }
+            }*/
 
             if (duplicated) {
                 wrongIdsList.push_back(value);
@@ -175,17 +172,40 @@ void Exercise2::run2(std::string const& filename) {
         }
 
         int wrongSize = wrongIdsList.size();
+
+        std::cout << "computing results ..." << std::endl;
+        std::cout << "current total = " << wrongIdsCount << std::endl;
         for (long val : wrongIdsList) {
             this->wrongIdsCount += val;
         }
 
         std::cout << strId1 << "-" << strId2 << " has " << wrongSize << " invalids IDs : " << std::endl;
-        for (int val : wrongIdsList) {
-       //     std::cout << "wrong=" << val << std::endl;
+        for (long val : wrongIdsList) {
+            std::cout << "wrong=" << val << std::endl;
         }
    }
 
    std::cout << "Adding up all the invalid IDs produces " << this->readWrongIdsCount() << std::endl;
+}
+
+bool repeatDigit(long number) {
+    std::vector<long> temp;
+    int divide = 10;
+    while (number > 0){
+        long digit = number % divide;
+        number /= divide; 
+        std::cout << "digit = " << digit << std::endl;
+        temp.push_back(digit);
+    }
+    sort(temp.begin(),temp.end());
+    bool duplicated = true;
+    for (int i = 0; i < temp.size(); i++){
+        if(temp[i] == temp[i+1]) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 long Exercise2::readWrongIdsCount() const {

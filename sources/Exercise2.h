@@ -5,6 +5,8 @@
 
 #include <string>
 
+bool repeatDigit(long number);
+
 class Exercise2 : public IExercise {
 
 private:
