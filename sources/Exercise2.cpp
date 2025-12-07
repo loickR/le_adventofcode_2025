@@ -40,19 +40,21 @@ void Exercise2::run(std::string const& filename) {
             //std::cout << "reading value " << str << std::endl;
 
             if (str.at(0) == '0') {
-                break;
+                continue;
             }
             
+            if (str.length()%2 != 0) {
+                continue;
+            }
+
             std::vector<std::string> listsubstr;
             int subSize = str.length() / 2;
-            
             for (int k = 0; k < str.length(); k+=subSize) {
                 std::string subStr = str.substr(k, subSize);
-                //std::cout << "splitting value = "  << subStr << std::endl;
                 listsubstr.push_back(subStr);
             }
 
-            bool duplicated = true;
+            bool duplicated = false;
             for (int k = 0; k < listsubstr.size(); k++) {
                 int n = k;
                 int kp1 = n + 1;
@@ -60,23 +62,20 @@ void Exercise2::run(std::string const& filename) {
                 if (kp1 > listsubstr.size()) {
                     break;
                 }
-                
+
                 std::string currentN = listsubstr[n];
                 std::string currentN1 = listsubstr[kp1];
 
-                if (currentN1.empty()) {
+                if (currentN1.empty() || currentN.empty()) {
                     break;
                 }
 
                 std::cout << "Comparing " << currentN << " to " << currentN1 << std::endl;
-
                 duplicated = currentN == currentN1;
+                break;
             }
 
             if (duplicated) {
-                wrongIdsList.push_back(value);
-            }
-            else if (value % 11 == 0) {
                 wrongIdsList.push_back(value);
             }
         }
@@ -86,7 +85,6 @@ void Exercise2::run(std::string const& filename) {
             this->wrongIdsCount += val;
         }
 
-        this->wrongIdsCount += wrongSize;
         std::cout << strId1 << "-" << strId2 << " has " << wrongSize << " invalids IDs : " << std::endl;
         for (int val : wrongIdsList) {
             std::cout << "wrong=" << val << std::endl;
