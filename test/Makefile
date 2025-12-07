@@ -13,11 +13,12 @@ LIBS=-L$(LIB_DIR) -l$(LIB)
 OBJ_DIR=../obj
 OBJ_SRC+=$(OBJ_DIR)/IExercise.o \
 $(OBJ_DIR)/Exercise1.o \
-$(OBJ_DIR)/Exercise2.o
+$(OBJ_DIR)/Exercise2.o \
+$(OBJ_DIR)/Exercise3.o
 OBJ_TEST+=$(OBJ_DIR)/mainTest.o \
 $(OBJ_DIR)/Exercise1Test.o \
 $(OBJ_DIR)/Exercise2Test.o \
-$(OBJ_SRC)
+$(OBJ_DIR)/Exercise3Test.o \
 
 all:	$(EXEC)
 

@@ -22,6 +22,7 @@ LIBS=-L$(LIB_DIR) -l$(LIB)
 OBJS+=$(OBJ_DIR)/IExercise.o \
 $(OBJ_DIR)/Exercise1.o \
 $(OBJ_DIR)/Exercise2.o \
+$(OBJ_DIR)/Exercise3.o \
 $(OBJ_DIR)/main.o \
 
 all:	$(EXEC)
@@ -37,7 +38,7 @@ package:
 	make clean
 	make all
 
-runTest:
+tests:
 	make package
 	cd $(PROJECT_ROOT)/test && make run
 
