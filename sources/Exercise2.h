@@ -8,14 +8,16 @@
 class Exercise2 : public IExercise {
 
 private:
-    int wrongIdsCount;
+    long wrongIdsCount;
 
 public:
     Exercise2();
 
     void run(std::string const& filename);
 
-    int readWrongIdsCount() const;
+    void run2(std::string const& filename);
+
+    long readWrongIdsCount() const;
 
     void doExecute();
 

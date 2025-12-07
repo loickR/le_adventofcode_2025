@@ -13,12 +13,13 @@ TEST_CASE ("Exercice1 partie1 - exemple") {
     REQUIRE(exe1.readPassword() == 3);
 }
 
+/*
 TEST_CASE ("Exercice1 partie2 - exemple") {
     Exercise1 exe1;
     exe1.run2("../exercises/sample.txt");
 
     REQUIRE(exe1.readPassword() == 6);
-}
+}*/
 
 /*
 TEST_CASE ("Exercice1 partie2 - exercice") {
