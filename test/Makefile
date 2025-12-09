@@ -5,20 +5,20 @@ HEADER=../include
 HEADERS_TEST=../sources
 SOURCES=sources
 CXX=g++
-CFLAGS=-std=c++17 -g -pg -ftest-coverage -fprofile-arcs -O0
+CFLAGS=-std=c++17 -ftest-coverage -g -pg -fprofile-arcs -O0
 EXEC=tests.exe
 LIB_DIR=../lib/
 LIB=psyume
 LIBS=-L$(LIB_DIR) -l$(LIB)
 OBJ_DIR=../obj
-OBJ_SRC+=$(OBJ_DIR)/IExercise.o \
-$(OBJ_DIR)/Exercise1.o \
+OBJ_SRC+=$(OBJ_DIR)/Exercise1.o \
 $(OBJ_DIR)/Exercise2.o \
-$(OBJ_DIR)/Exercise3.o
-OBJ_TEST+=$(OBJ_DIR)/mainTest.o \
-$(OBJ_DIR)/Exercise1Test.o \
+$(OBJ_DIR)/Exercise3.o \
+$(OBJ_DIR)/IExercise.o
+OBJ_TEST+=$(OBJ_DIR)/Exercise1Test.o \
 $(OBJ_DIR)/Exercise2Test.o \
 $(OBJ_DIR)/Exercise3Test.o \
+$(OBJ_DIR)/mainTest.o
 
 all:	$(EXEC)
 

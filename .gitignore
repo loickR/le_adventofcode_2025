@@ -6,3 +6,4 @@ pkg_yrco.tar
 /libpsyume.dylib
 /aoc2025.exe
 /test/tests.exe
+/test/libpsyume.dylib
