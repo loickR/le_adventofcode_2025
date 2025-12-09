@@ -21,9 +21,9 @@ LIB=psyume
 LIBS=-L$(LIB_DIR) -l$(LIB)
 OBJS+=$(OBJ_DIR)/IExercise.o \
 $(OBJ_DIR)/Exercise1.o \
+$(OBJ_DIR)/main.o \
 $(OBJ_DIR)/Exercise2.o \
 $(OBJ_DIR)/Exercise3.o \
-$(OBJ_DIR)/main.o \
 
 all:	$(EXEC)
 
@@ -51,6 +51,7 @@ directories:
 	mkdir $(TARGET)
 
 clean:
+	$(DEL) *.dylib
 	$(DEL) $(EXEC)
 	$(DEL) $(OBJ_DIR)/*.*
 	$(DEL) $(TARGET)/*.*
